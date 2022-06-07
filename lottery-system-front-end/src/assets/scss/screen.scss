@@ -1,0 +1,12 @@
+// @import all scss styles here
+
+// Style
+html{
+    font-size: 16px;
+}
+@import "partials/variables";
+@import "partials/common";
+@import "partials/style";
+@import "partials/responsive";
+
+// Plugins

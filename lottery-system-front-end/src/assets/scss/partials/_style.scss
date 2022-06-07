@@ -1,0 +1,142 @@
+// Variables
+@import "variables";
+
+.staking-page {
+	background-image: url(../images/herobanner.jpeg);
+	background-color: rgba(255, 255, 255, 0);
+    background-position: left top;
+    background-repeat: no-repeat;
+    border-width: 0px;
+    border-color: rgba(255, 255, 255, 0.05);
+    border-style: solid;
+    background-size: cover;
+	min-height: 80vh;
+	display: flex;
+	align-items: center;
+	margin-bottom: 50px;
+}
+
+header{
+	.logo{
+		width: 125px;
+	}
+	.btn-primary{
+		font-family: $sans;
+		font-weight: 700;
+	}
+}
+
+.toggle-btns{
+	text-align: center;
+	margin: 28px 0;
+}
+.stakecard{
+	max-width: 420px;
+	margin: 0 auto;
+	padding: 40px 40px 48px 40px;
+	box-shadow: 0px 4px 52px rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	p{
+		font-size: 14px;
+		line-height: 20px;
+	}
+	.stakecard-title{
+		margin-bottom: 32px;
+		h2{
+			color: $primary;
+		}
+		p{
+			color: #666;
+		}
+	}
+	.stakecard-input{
+		.stakecard-input-labels{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 4px;
+			p{
+				margin-bottom: 0;
+			}
+		}
+	}
+	.stakecard-input-field{
+		::placeholder{
+			color: rgba(#44137C, 0.5);
+		}
+		.input{
+			background: #DAD0E5;
+			border-radius: 8px;
+			color: rgba(#44137C, 0.5);
+			font-size: 20px;
+			height: 52px;
+		}
+	}
+	.stakecard-descc{
+		min-height: 120px;
+	}
+
+		/* width */
+	::-webkit-scrollbar {
+		width: 10px;
+	}
+	
+	/* Track */
+	::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+	
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		border-radius: 10px;
+		background: rgba(196, 196, 196, 0.4);
+	}
+	
+}
+
+.stakecard-unstake-details{
+	padding: 16px;
+	background: rgba(0, 32, 255, 0.05);
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	&[disabled]{
+		pointer-events: none;
+		background: #FDE8ED;
+		.btn-red{
+			background: #FAB9C9;
+			border: 1px solid #FAB9C9;
+		}
+	}
+}
+.unstakeWrapper{
+	max-height: 302px;
+    overflow: auto;
+	.scroller{
+		padding: 0 20px;
+	}
+}
+
+footer{
+	background-color: $pureblack;
+	padding: 20px;
+	p{
+		color: #efefef;
+	}
+	.logo{
+		width: 170px;
+	}
+	ul{
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		li{
+			display: inline-block;
+			margin-right: 40px;
+			img{
+				width: 50px;
+			}
+		}
+	}
+}

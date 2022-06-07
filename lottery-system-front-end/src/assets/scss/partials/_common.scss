@@ -1,0 +1,238 @@
+
+
+// Background & colors
+.bg-white {
+  background-color: $white;
+}
+.bg-black {
+  background-color: $black;
+}
+.bg-grey {
+  background-color: $grey;
+}
+.bg-yellow {
+  background-color: $yellow;
+}
+.bg-purple {
+  background-color: $primary;
+}
+
+
+.clr-white {
+  color: $white;
+}
+.clr-yellow {
+  color: $secondary;
+}
+.clr-black {
+  color: $black;
+}
+.clr-grey{
+  color: $grey;
+}
+.clr-purple{
+  color: $primary;
+}
+
+//margins
+.mt-40{
+  margin-top: toRem(40);
+}
+.mt-28{
+  margin-top: toRem(28);
+}
+
+//paddings
+.pb-60{
+  padding-bottom: toRem(60);
+}
+
+//font sizes
+
+.fs-12 {
+  font-size: 12px !important;
+}
+.fs-14 {
+  font-size: 14px !important;
+}
+.fs-16 {
+  font-size: 16px !important;
+}
+.fs-18 {
+  font-size: toRem(18) !important;
+}
+.fs-20 {
+  font-size: toRem(20) !important;
+}
+.fs-24 {
+  font-size: toRem(24) !important;
+}
+.fs-26 {
+  font-size: toRem(26) !important;
+}
+.fs-32 {
+  font-size: toRem(32) !important;
+}
+.fs-48 {
+  font-size: toRem(48) !important;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.max-100{
+  max-width: 100% !important;
+}
+
+.btn-primary{
+  background: linear-gradient(180deg, #7031A0 0%, #7946A0 100%);
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.65), inset 0px -4px 0px #7030A0;
+  border: 1px solid $primary;
+  padding-left: 24px;
+  padding-right: 24px;
+  text-align: center;
+  font-weight: 400;
+  font-family: $primary-family;
+  height: 50px;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+  &:hover{
+    border: 1px solid $primary;
+    background: linear-gradient(180deg, #7946A0 0%, #7031A0 100%);
+  }
+  .btn-md{
+    height: 56px;
+  }
+}
+.btn-solid-primary,
+.btn-toggle{
+  background: $primary;
+  border: 1px solid $primary;
+  padding-left: 24px;
+  padding-right: 24px;
+  text-align: center;
+  font-weight: 600;
+  font-family: $primary-family;
+  height: 48px;
+  border-radius: 8px;
+  color: $white;
+  min-width: 150px;
+}
+.unactive{
+  background: transparent;
+  border: 1px solid $white;
+  transition: all 0.3s ease-in-out;
+  &:hover{
+    background: $primary;
+    border: 1px solid $primary;
+  }
+}
+.btn-red{
+  background: $red;
+  border: 1px solid $red;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-align: center;
+  font-weight: 700;
+  font-family: $primary-family;
+  font-size: 12px;
+  height: 32px;
+  border-radius: 50px;
+  color: $white;
+}
+.btn-disable:disabled{
+  background: #AFAFAF;
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.65), inset 0px -4px 0px #8D8D8D;
+}
+
+button,
+.btn{
+  &:focus{
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+  }
+}
+input,
+.input,
+select,
+.form-control,
+.is-invalid,
+.navbar-light .navbar-toggler{
+  box-shadow: none;
+  &:focus{
+    outline: 0;
+    box-shadow: none !important;
+  }
+}
+.navbar-light .navbar-toggler{
+  border: 0;
+}
+
+// Common Components
+html {
+  body {
+    color: $black;
+    font-family: $primary-family;
+    font-size: $primary-fs;
+    font-weight: 400;
+    line-height: 20px;
+    a {
+      color: $primary;
+      text-decoration: underline;
+      outline: none !important;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    // Headings
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: $sans;
+    }
+    h1,.h1 {
+      font-size: $h1-font-size;
+      font-weight: 700;
+      line-height: toRem(40);
+    }
+    h2,.h2 {
+      font-size: $h2-font-size;
+      font-weight: 700;
+      line-height: toRem(32);
+    }
+    h3,.h3 {
+      font-size: $h3-font-size;
+      font-weight: 700;
+      line-height: toRem(22);
+    }
+    h4,.h4 {
+      font-size: $h4-font-size;
+      font-weight: 700;
+      line-height: toRem(19);
+    }
+    h5,.h5 {
+      font-size: $h5-font-size;
+      font-weight: 700;
+      line-height: 18px;
+    }
+    h6,.h6 {
+      font-size: $h6-font-size;
+      font-weight: 700;
+      line-height: 16px;
+    }
+    p{
+      font-family: $primary-family;
+      line-height: 25px;
+    }
+  }
+}
+
+iframe{
+  display: none !important;
+}

@@ -21,13 +21,31 @@ import App from "./App";
 import { initContract } from "./nearJs/utils";
 import { BrowserRouter as Router } from "react-router-dom";
 
+import { createRoot } from "react-dom/client";
+
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
 window.nearInitPromise = initContract()
   .then(() => {
-    ReactDOM.render(
+    root.render(
       <Router>
         <App />
-      </Router>,
-      document.querySelector("#root")
+      </Router>
     );
   })
   .catch(console.error);
+
+// import React from "react";
+// import ReactDOM from "react-dom/client";
+// import App from "./App";
+// import { Buffer } from "buffer";
+
+// global.Buffer = Buffer;
+
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>
+// );

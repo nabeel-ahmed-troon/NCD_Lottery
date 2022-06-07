@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button, Table } from "react-bootstrap";
+import { get_lottery_ticket_price } from "../../nearJs/utils";
 
 const Airdrop = () => {
+  const [lotteryPrice, setLotteryPrice] = useState(0);
+  // setLotteryPrice(get_lottery_ticket_price());
+  const get_price = () => {
+    setLotteryPrice(get_lottery_ticket_price());
+  };
   return (
     <>
       <Form noValidate>
@@ -11,8 +17,9 @@ const Airdrop = () => {
             <p>Airdrop Details are Below</p>
           </div>
           <div className="lotterycard-input">
-            <h4>Airdrop Count : </h4>
-            <h4>Airdrop Count : </h4>
+            {/* <h4>Airdrop Price : {airdropPrice}</h4> */}
+            <h4>Airdrop Count : {lotteryPrice}</h4>
+            <button onClick={get_price}>get</button>
             <h4>Airdrop Amount : </h4>
             {/* <Table striped bordered hover size="sm">
               <thead>

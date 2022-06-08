@@ -120,7 +120,7 @@ export async function handleBuyTicket() {
 
   await contract.ft_transfer_call(
     {
-      receiver_id: "ncd_lottery.testnet",
+      receiver_id: "ncd_lottery1.testnet",
       amount: "100000000000000000000000",
       msg: "helo", // argument name and value - pass empty object if no args required
     },
@@ -171,9 +171,7 @@ export async function handlePickWinner() {
 }
 
 export async function handleAirdrop() {
-  await window.contract.ft_airdrop({
-    args: {},
-  });
+  await window.contract.ft_airdrop();
 }
 
 // export async function set_greeting(message) {

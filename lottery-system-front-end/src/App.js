@@ -1,12 +1,17 @@
 import "./assets/scss/screen.css";
 import Home from "./components/Home";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { connect, WalletConnection, utils, Contract } from "near-api-js";
-import React, { useEffect, useState } from "react";
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import { connect, WalletConnection, utils, Contract } from "near-api-js";
+// import React, { useEffect, useState } from "react";
 import { getConfig } from "./nearJs/config.js";
+import { get_lottery_ticket_price } from "./nearJs/utils";
+// import Get from "./components/get";
+// import GetPrice from "./components/getPrice";
+// import Airdrop from "./components/Airdropp";
 
-// function App() {
-export default function App() {
+// import NearProvider from "./nearJs/provider";
+function App() {
+  // export default function App() {
   // const [wallet, setWallet] = useState(null);
   // const [contract, setContract] = useState(null);
   // const [balance, setBalance] = useState("");
@@ -82,7 +87,7 @@ export default function App() {
 
   // //START NEW LOTTERY
   // const handleStartNewLottery = async () => {
-  //   // Call the reset function on the counter contract
+  //
   //   // We have to deposit at least one yoctoNEAR (1e-24 NEAR) to be able to call change functions
   //   await contract.start_new_lottery({
   //     args: {
@@ -100,7 +105,7 @@ export default function App() {
 
   // //PICK WINNER
   // const handlePickWinner = async () => {
-  //   // Call the reset function on the counter contract
+  //
   //   // We have to deposit at least one yoctoNEAR (1e-24 NEAR) to be able to call change functions
   //   await contract.pick_winner({
   //     args: {},
@@ -113,7 +118,7 @@ export default function App() {
 
   // //CLAIM REWARD
   // const handleClaimReward = async () => {
-  //   // Call the reset function on the counter contract
+  //
   //   // We have to deposit at least one yoctoNEAR (1e-24 NEAR) to be able to call change functions
   //   await contract.pick_winner({
   //     args: {},
@@ -134,8 +139,9 @@ export default function App() {
   // };
 
   // const [price, setPrice] = useState(0);
-  // const getLotteryPrice = async () => {
-  //   setPrice(await contract.get_ticket_price());
+  // const getLotteryPrice = () => {
+  //   setPrice(get_lottery_ticket_price());
+  //   // get_lottery_ticket_price().then(({ available }) => setPrice(available));
   //   // setAirdropLimit(await contract.get_airdrop_limit());
   // };
 
@@ -155,9 +161,17 @@ export default function App() {
       <h1>Airdrop Count {airdropCount}</h1>
       <button onClick={() => getLotteryPrice()}>price</button>
       <h1>Airdrop Count {price}</h1> */}
+      {/* <NearProvider> */}
       <Home />
+      {/* <Airdrop /> */}
+      {/* <Get /> */}
+      {/* <GetPrice /> */}
+      {/* </NearProvider> */}
+
+      {/* <button onClick={() => getLotteryPrice()}>click</button>
+      <h2>{price}</h2> */}
     </>
   );
 }
 
-// export default App;
+export default App;

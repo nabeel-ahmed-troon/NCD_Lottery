@@ -8,7 +8,7 @@ import Admin from "./Admin";
 import { fabClasses } from "@mui/material";
 import { FlashOnRounded } from "@mui/icons-material";
 
-const StakeCards = () => {
+const Lottery = () => {
   const [airdrop, setAirdrop] = useState(true);
   const [buy_ticket, setBuyTicket] = useState(false);
   const [admin, setAdmin] = useState(false);
@@ -79,4 +79,4 @@ const StakeCards = () => {
   );
 };
 
-export default StakeCards;
+export default Lottery;

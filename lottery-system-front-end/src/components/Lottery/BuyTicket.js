@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
 import ClaimReward from "./ClaimReward";
+import { handleBuyTicket } from "../../nearJs/utils";
 // import { Formik } from "formik";
 // import { validationSchema } from "../../helpers/Validations";
 // import Bucks from "../../assets/images/bucks.svg";
@@ -24,6 +25,7 @@ const Airdrop = () => {
               className="btn-primary w-100"
               variant="primary"
               type="submit"
+              onClick={handleBuyTicket}
             >
               {/* <img src={Lock} className="img-fluid" alt="lock icon" /> lottery and */}
               Buy Lottery Ticket

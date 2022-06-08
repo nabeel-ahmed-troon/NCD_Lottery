@@ -1,9 +1,12 @@
 // import { connect } from "formik";
 import React from "react";
 import { Container, Navbar, Button } from "react-bootstrap";
-import * as nearAPI from "near-api-js";
+// import * as nearAPI from "near-api-js";
 
 import { login as signIn, logout } from "../../nearJs/utils";
+
+// import { NearContext } from "../../nearJs/provider";
+// import { useContext } from "react";
 // import getConfig from "../../nearJs/config";
 // import { NavLink } from "react-router-dom";
 // import WalletContext from "../../store/Wallet/WalletContext";
@@ -49,16 +52,13 @@ import { login as signIn, logout } from "../../nearJs/utils";
 
 //=================================================================
 const Header = () => {
-  // const [login, setLogin] = useState(null);
-  //   const { connect, active, account } = useContext(WalletContext);
+  // const { login } = useContext(NearContext);
 
-  //   const validateExtension = () => {
-  //     if (typeof window.ethereum == "undefined") {
-  //       window.open("https://metamask.io/download/", "_blank");
-  //     } else {
-  //       connect();
-  // }
-  //   };
+  // const handleLoginChange = () => {
+  //   login();
+  //   /* let abc = isRegistered()
+  //       console.log("response", abc) */
+  // };
   return (
     <header>
       <Navbar bg="light" expand="lg">

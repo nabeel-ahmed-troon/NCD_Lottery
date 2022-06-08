@@ -1,9 +1,16 @@
-import { connect, Contract, keyStores, WalletConnection } from "near-api-js";
+import {
+  connect,
+  Contract,
+  keyStores,
+  utils,
+  WalletConnection,
+} from "near-api-js";
+import * as nearAPI from "near-api-js";
 import getConfig from "./config";
 
 const nearConfig = getConfig(process.env.NODE_ENV || "development");
+const GAS = "300000000000000";
 
-// Initialize contract & set global variables
 export async function initContract() {
   // Initialize connection to the NEAR testnet
   const near = await connect(
@@ -12,20 +19,14 @@ export async function initContract() {
       nearConfig
     )
   );
-
-  // Initializing Wallet based Account. It can work with NEAR testnet wallet that
-  // is hosted at https://wallet.testnet.near.org
   window.walletConnection = new WalletConnection(near);
 
-  // Getting the Account ID. If still unauthorized, it's just empty string
   window.accountId = window.walletConnection.getAccountId();
 
-  // Initializing our contract APIs by contract name and configuration
   window.contract = await new Contract(
     window.walletConnection.account(),
     nearConfig.contractName,
     {
-      // View methods are read only. They don't modify the state, but usually return some value.
       viewMethods: [
         "get_ticket_id",
         "get_lottery_state",
@@ -39,7 +40,7 @@ export async function initContract() {
         "all_ticket_owner",
         "get_approved_ft",
       ],
-      // Change methods can modify the state. But you don't receive the returned value when called.
+
       changeMethods: [
         "start_new_lottery",
         "pick_winner",
@@ -56,36 +57,124 @@ export async function initContract() {
 
 export function logout() {
   window.walletConnection.signOut();
-  // reload page
   window.location.replace(window.location.origin + window.location.pathname);
 }
 
 export function login() {
-  // Allow the current app to make calls to the specified contract on the
-  // user's behalf.
-  // This works by creating a new access key for the user's account and storing
-  // the private key in localStorage.
   window.walletConnection.requestSignIn();
 }
-
+//==============================================//
+//            VIEW FUNCTIONS START              //
+//==============================================//
 export async function get_lottery_ticket_price() {
   let response = await window.contract.get_ticket_price();
+
   return response;
 }
 
-const handleStartNewLottery = async () => {
-  // Call the reset function on the counter contract
-  // We have to deposit at least one yoctoNEAR (1e-24 NEAR) to be able to call change functions
-  await window.start_new_lottery({
+export async function get_ticket_limit() {
+  let response = await window.contract.get_ticket_limit();
+
+  return response;
+}
+
+export async function get_ticket_id() {
+  let response = await window.contract.get_ticket_id();
+
+  return response;
+}
+
+export async function get_lottery_state() {
+  let response = await window.contract.get_lottery_state();
+
+  return response;
+}
+
+export async function get_approved_ft() {
+  let response = await window.contract.get_approved_ft();
+
+  return response;
+}
+
+export async function get_airdrop_count() {
+  let response = await window.contract.get_airdrop_count();
+
+  return response;
+}
+//==============================================//
+//            VIEW FUNCTIONS END              //
+//==============================================//
+
+export async function handleBuyTicket() {
+  // 2350000000000000000000
+  const contract = new nearAPI.Contract(
+    window.walletConnection.account(), // the account object that is connecting
+    "lottery_ft.testnet",
+    {
+      // name of contract you're connecting to
+      viewMethods: ["getMessages"], // view methods do not change state but usually return a value
+      changeMethods: ["ft_transfer_call"], // change methods modify state
+      sender: window.walletConnection.account(), // account object to initialize and sign transactions.
+    }
+  );
+
+  await contract.ft_transfer_call(
+    {
+      receiver_id: "ncd_lottery.testnet",
+      amount: "100000000000000000000000",
+      msg: "helo", // argument name and value - pass empty object if no args required
+    },
+    "300000000000000", // attached GAS (optional)
+    "1" // attached deposit in yoctoNEAR (optional)
+  );
+}
+
+export async function handleStorageDeposit() {
+  // 2350000000000000000000
+  const contract = new nearAPI.Contract(
+    window.walletConnection.account(), // the account object that is connecting
+    "lottery_ft.testnet",
+    {
+      // name of contract you're connecting to
+      viewMethods: ["getMessages"], // view methods do not change state but usually return a value
+      changeMethods: ["storage_deposit"], // change methods modify state
+      sender: window.walletConnection.account(), // account object to initialize and sign transactions.
+    }
+  );
+
+  await contract.storage_deposit(
+    {
+      // argument name and value - pass empty object if no args required
+    },
+    "300000000000000", // attached GAS (optional)
+    "2350000000000000000000" // attached deposit in yoctoNEAR (optional)
+  );
+}
+
+export async function handleStartNewLottery() {
+  await window.contract.start_new_lottery({
     args: {
       ticket_limit: 5,
       ticket_price: "1000000000000000000000000",
       approved_ft: "lottery_ft.testnet",
       nft_contract: "lottery_nft.testnet",
     },
-    // amount: deposit.toFixed(0),
+    amount: "1",
   });
-};
+}
+
+export async function handlePickWinner() {
+  await window.contract.pick_winner({
+    args: {},
+    amount: "1",
+  });
+}
+
+export async function handleAirdrop() {
+  await window.contract.ft_airdrop({
+    args: {},
+  });
+}
 
 // export async function set_greeting(message) {
 //   let response = await window.contract.set_greeting({

@@ -4,7 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import Airdrop from "./Airdrop";
 import BuyTicket from "./BuyTicket";
 import Admin from "./Admin";
-// import ClaimReward from "./ClaimReward";
+import ClaimReward from "./ClaimReward";
 import { fabClasses } from "@mui/material";
 import { FlashOnRounded } from "@mui/icons-material";
 
@@ -24,12 +24,12 @@ const Lottery = () => {
     setAdmin(false);
     setClaimReward(false);
   };
-  // const handleClaimRewardActive = () => {
-  //   setBuyTicket(false);
-  //   setAirdrop(false);
-  //   setAdmin(false);
-  //   setClaimReward(true);
-  // };
+  const handleClaimRewardActive = () => {
+    setBuyTicket(false);
+    setAirdrop(false);
+    setAdmin(false);
+    setClaimReward(true);
+  };
 
   const handleAdminActive = () => {
     setBuyTicket(false);
@@ -61,19 +61,13 @@ const Lottery = () => {
             className={`btn-toggle ${admin ? "unactive" : null}`}
           >
             Admin
-          </button>
-          {/* <button
-            type="button"
-            onClick={handleClaimRewardActive}
-            className={`btn-toggle ${claim_reward ? "unactive" : null}`}
-          >
-            Claim Reward
-          </button> */}
+          </button>{" "}
+          */
         </div>
         {airdrop && <Airdrop />}
         {buy_ticket && <BuyTicket />}
         {admin && <Admin />}
-        {/* {claim_reward && <ClaimReward />} */}
+        {claim_reward && <ClaimReward />}
       </Col>
     </Row>
   );

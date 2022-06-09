@@ -7,18 +7,30 @@ import {
 } from "near-api-js";
 import * as nearAPI from "near-api-js";
 import getConfig from "./config";
+import { useState } from "react";
+
+const config = {
+  networkId: "testnet",
+  keyStore: new keyStores.BrowserLocalStorageKeyStore(),
+  // keyStore: new keyStores.,
+  nodeUrl: "https://rpc.testnet.near.org",
+  walletUrl: "https://wallet.testnet.near.org",
+  helperUrl: "https://helper.testnet.near.org",
+  explorerUrl: "https://explorer.testnet.near.org",
+};
 
 const nearConfig = getConfig(process.env.NODE_ENV || "development");
 const GAS = "300000000000000";
 
 export async function initContract() {
   // Initialize connection to the NEAR testnet
-  const near = await connect(
-    Object.assign(
-      { deps: { keyStore: new keyStores.BrowserLocalStorageKeyStore() } },
-      nearConfig
-    )
-  );
+  // const near = await connect(
+  //   Object.assign(
+  //     { deps: { keyStore: new keyStores.BrowserLocalStorageKeyStore() } },
+  //     nearConfig
+  //   )
+  // );
+  const near = await connect(config);
   window.walletConnection = new WalletConnection(near);
 
   window.accountId = window.walletConnection.getAccountId();
@@ -120,8 +132,8 @@ export async function handleBuyTicket() {
 
   await contract.ft_transfer_call(
     {
-      receiver_id: "ncd_lottery1.testnet",
-      amount: "100000000000000000000000",
+      receiver_id: "lottery_project.testnet",
+      amount: "1000000000000000000000000",
       msg: "helo", // argument name and value - pass empty object if no args required
     },
     "300000000000000", // attached GAS (optional)
@@ -152,26 +164,43 @@ export async function handleStorageDeposit() {
 }
 
 export async function handleStartNewLottery() {
-  await window.contract.start_new_lottery({
+  const contract = new nearAPI.Contract(
+    window.walletConnection.account(), // the account object that is connecting
+    "lottery_project.testnet",
+    {
+      // name of contract you're connecting to
+      viewMethods: ["getMessages"], // view methods do not change state but usually return a value
+      changeMethods: ["start_new_lottery"], // change methods modify state
+      sender: window.walletConnection.account(), // account object to initialize and sign transactions.
+    }
+  );
+  await contract.start_new_lottery({
     args: {
       ticket_limit: 5,
       ticket_price: "1000000000000000000000000",
       approved_ft: "lottery_ft.testnet",
       nft_contract: "lottery_nft.testnet",
     },
-    amount: "1",
   });
 }
 
 export async function handlePickWinner() {
   await window.contract.pick_winner({
     args: {},
-    amount: "1",
   });
 }
 
 export async function handleAirdrop() {
-  await window.contract.ft_airdrop();
+  await window.contract.ft_airdrop({});
+}
+
+export async function handleClaimReward() {
+  await window.contract.claim_reward(
+    {
+      _token_id: "Pakistan",
+    },
+    "300000000000000" // attached GAS (optional)
+  );
 }
 
 // export async function set_greeting(message) {

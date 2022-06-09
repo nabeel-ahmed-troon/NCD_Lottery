@@ -59,6 +59,7 @@ const Header = () => {
   //   /* let abc = isRegistered()
   //       console.log("response", abc) */
   // };
+
   return (
     <header>
       <Navbar bg="light" expand="lg">
@@ -77,6 +78,14 @@ const Header = () => {
             onClick={signIn}
           >
             Connect Wallet
+          </Button>
+
+          <Button
+            variant="primary"
+            className="btn-primary fs-14"
+            onClick={logout}
+          >
+            Logout
           </Button>
         </Container>
       </Navbar>

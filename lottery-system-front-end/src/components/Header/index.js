@@ -1,9 +1,6 @@
 // import { connect } from "formik";
-import React from "react";
-import { Container, Navbar, Button } from "react-bootstrap";
-// import * as nearAPI from "near-api-js";
 
-import { login as signIn, logout } from "../../nearJs/utils";
+// import * as nearAPI from "near-api-js";
 
 // import { NearContext } from "../../nearJs/provider";
 // import { useContext } from "react";
@@ -51,6 +48,13 @@ import { login as signIn, logout } from "../../nearJs/utils";
 // };
 
 //=================================================================
+import { login as signIn, logout } from "../../nearJs/utils";
+import React from "react";
+import { Container, Navbar, Button } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import Logo from "../../assets/images/lottery_logo.png";
+
 const Header = () => {
   // const { login } = useContext(NearContext);
 
@@ -59,35 +63,55 @@ const Header = () => {
   //   /* let abc = isRegistered()
   //       console.log("response", abc) */
   // };
+  const [login, setLogin] = useState("Connect Wallet");
+  const [accountId, setAccountId] = useState("");
+  useEffect(() => {
+    if (window.walletConnection.isSignedIn()) {
+      let id = window.walletConnection.getAccountId();
+      setAccountId(id);
+    }
+  }, []);
+  useEffect(() => {
+    if (window.walletConnection.isSignedIn()) {
+      setLogin("Logout");
+    }
+  }, []);
+
+  const handleLogin = () => {
+    if (window.walletConnection.isSignedIn()) {
+      logout();
+      setLogin("Connect Wallet");
+    } else {
+      signIn();
+      setLogin("Logout");
+    }
+  };
 
   return (
     <header>
       <Navbar bg="light" expand="lg">
         <Container>
-          {/* <NavLink to="/"></NavLink> */}
-          <Button
-            //   onClick={validateExtension}
-            variant="primary"
-            className="btn-primary fs-14"
-          >
-            Lottery Dapp
-          </Button>
-          <Button
+          <NavLink to="/">
+            <img src={Logo} className="img-fluid logo" alt="logo" />
+          </NavLink>
+          <p>Your Id : {accountId}</p>
+          {/* <Button
             variant="primary"
             className="btn-primary fs-14"
             onClick={signIn}
           >
             Connect Wallet
-          </Button>
+          </Button> */}
 
           <Button
             variant="primary"
             className="btn-primary fs-14"
-            onClick={logout}
+            onClick={handleLogin}
           >
-            Logout
+            {login}
           </Button>
         </Container>
+        <p>Your Id : {accountId}</p>
       </Navbar>
     </header>
   );

@@ -32,7 +32,7 @@ const Statistics = () => {
           <h2 className="text-uppercase">Lottery Details</h2>
           <Button onClick={getData}>Refresh</Button>
         </div>
-        <h4>Fungible Token : {ft}</h4>
+        <h4 className="text-right">Fungible Token : {ft}</h4>
         <p>Lottery State : {state}</p>
         <h4>Total Tickets : {limit}</h4>
         <h4>Ticket Price : {price}</h4>

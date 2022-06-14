@@ -163,7 +163,7 @@ export async function handleStorageDeposit() {
   );
 }
 
-export async function handleStartNewLottery() {
+export async function handleStartNewLottery(props) {
   const contract = new nearAPI.Contract(
     window.walletConnection.account(), // the account object that is connecting
     "lottery_project.testnet",
@@ -176,12 +176,20 @@ export async function handleStartNewLottery() {
   );
   await contract.start_new_lottery({
     args: {
-      ticket_limit: 5,
-      ticket_price: "1000000000000000000000000",
-      approved_ft: "lottery_ft.testnet",
-      nft_contract: "lottery_nft.testnet",
+      ticket_limit: props.ticketLimit,
+      ticket_price: props.ticketPrice,
+      approved_ft: props.approvedFt,
+      nft_contract: props.approvedNft,
     },
   });
+  // await contract.start_new_lottery({
+  //   args: {
+  //     ticket_limit: 5,
+  //     ticket_price: "1000000000000000000000000",
+  //     approved_ft: "lottery_ft.testnet",
+  //     nft_contract: "lottery_nft.testnet",
+  //   },
+  // });
 }
 
 export async function handlePickWinner() {

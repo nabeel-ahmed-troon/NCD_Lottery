@@ -2,6 +2,7 @@ import React from "react";
 import { Form, Button } from "react-bootstrap";
 import Stack from "@mui/material/Stack";
 import { handleStartNewLottery, handlePickWinner } from "../../nearJs/utils";
+import StartLottery from "./startLottery";
 // import { Formik } from "formik";
 // import { validationSchema } from "../../helpers/Validations";
 // import Bucks from "../../assets/images/bucks.svg";
@@ -10,6 +11,7 @@ import { handleStartNewLottery, handlePickWinner } from "../../nearJs/utils";
 const Admin = () => {
   return (
     <>
+      <StartLottery />
       <div className="stakecard text-center bg-white">
         <div className="stakecard-title">
           <h2 className="text-uppercase">Admin Panel</h2>
@@ -22,7 +24,7 @@ const Admin = () => {
             alignItems="center"
             justifyContent="center"
           >
-            <Button
+            {/* <Button
               className="btn-primary "
               //   className="admin_card"
               //   className={`btn-primary w-30`}
@@ -32,9 +34,8 @@ const Admin = () => {
               onClick={handleStartNewLottery}
             >
               {/* <img src={Lock} className="img-fluid" alt="lock icon" /> Stake and */}
-              Start Lottery
-            </Button>
-
+            {/* Start Lottery */}
+            {/* </Button> */}
             <Button
               className="btn-primary"
               //   className={`btn-toggle me-3`}

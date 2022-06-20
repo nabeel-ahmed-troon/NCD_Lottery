@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
-import Airdrop from "./Airdrop";
-import BuyTicket from "./BuyTicket";
-
-import ClaimReward from "./ClaimReward";
+import Admin from "./Admin";
 
 const Lottery = () => {
   const [airdrop, setAirdrop] = useState(true);
@@ -38,7 +35,7 @@ const Lottery = () => {
     <Row className="justify-content-center">
       <Col md={6}>
         <div className="toggle-btns">
-          <button
+          {/* <button
             type="button"
             onClick={handleAirdropActive}
             className={`btn-toggle me-3 ${buy_ticket ? "unactive" : null}`}
@@ -51,11 +48,19 @@ const Lottery = () => {
             className={`btn-toggle me-3 ${airdrop ? "unactive" : null}`}
           >
             Participate
+          </button> */}
+          <button
+            type="button"
+            onClick={handleAdminActive}
+            className={`btn-toggle ${admin ? "unactive" : null}`}
+          >
+            Admin
           </button>
         </div>
-        {airdrop && <Airdrop />}
-        {buy_ticket && <BuyTicket />}
-        {claim_reward && <ClaimReward />}
+        {/* {airdrop && <Airdrop />} */}
+        {/* {buy_ticket && <BuyTicket />} */}
+        {admin && <Admin />}
+        {/* {claim_reward && <ClaimReward />} */}
       </Col>
     </Row>
   );

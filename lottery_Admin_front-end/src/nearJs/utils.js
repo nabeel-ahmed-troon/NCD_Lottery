@@ -145,7 +145,6 @@ export async function handleBuyTicket() {
       "300000000000000", // attached GAS (optional)
       "1" // attached deposit in yoctoNEAR (optional)
     );
-    alert("Successfully Buyed");
   } catch (error) {
     alert(error);
   }
@@ -187,15 +186,20 @@ export async function handleStartNewLottery(props) {
       sender: window.walletConnection.account(), // account object to initialize and sign transactions.
     }
   );
+  try {
+    await contract.start_new_lottery({
+      args: {
+        ticket_limit: props.ticketLimit,
+        ticket_price: props.ticketPrice,
+        approved_ft: "lottery_ft.testnet",
+        nft_contract: "lottery_nft.testnet",
+      },
+    });
+    alert("Successfully Started");
+  } catch (e) {
+    alert(e);
+  }
 
-  await contract.start_new_lottery({
-    args: {
-      ticket_limit: props.ticketLimit,
-      ticket_price: props.ticketPrice,
-      approved_ft: "lottery_ft.testnet",
-      nft_contract: "lottery_nft.testnet",
-    },
-  });
   // await contract.start_new_lottery({
   //   args: {
   //     ticket_limit: 5,
@@ -211,7 +215,7 @@ export async function handlePickWinner() {
     await window.contract.pick_winner({
       args: {},
     });
-    alert("Successfully Winner Picked");
+    alert("Succesfully Picked");
   } catch (error) {
     alert(error);
   }
@@ -220,7 +224,7 @@ export async function handlePickWinner() {
 export async function handleAirdrop() {
   try {
     await window.contract.ft_airdrop({});
-    alert("You got an Airdrop");
+    alert("Succesfully Airdroped");
   } catch (error) {
     alert(error);
   }
@@ -229,6 +233,7 @@ export async function handleAirdrop() {
 export async function handleResumeAirdrop() {
   try {
     await window.contract.resume_airdrop({});
+    alert("Resumed Airdroped");
   } catch (error) {
     alert(error);
   }
@@ -236,6 +241,7 @@ export async function handleResumeAirdrop() {
 export async function handleRevokeAirdrop() {
   try {
     await window.contract.revoke_airdrop({});
+    alert("Revoked Airdrop");
   } catch (error) {
     alert(error);
   }
@@ -248,7 +254,7 @@ export async function handleClaimReward() {
       },
       "300000000000000" // attached GAS (optional)
     );
-    alert("Successfully Claimed");
+    alert("Claimed Successfully");
   } catch (error) {
     alert(error);
   }

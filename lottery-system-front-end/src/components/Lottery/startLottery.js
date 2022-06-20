@@ -11,13 +11,24 @@ const StartLottery = () => {
   const [approvedFt, setApprovedFt] = useState("");
   const [approvedNft, setApprovedNft] = useState("");
 
+  const handleStartLottery = async () => {
+    await (
+      <handleStartNewLottery
+        ticketLimit={ticketLimit}
+        ticketPrice={ticketPrice}
+        approvedFt={approvedFt}
+        approvedNft={approvedNft}
+      />
+    );
+  };
+
   return (
     <>
       <div className="stakecard text-center bg-white">
         <div className="stakecard-title">
           <h2 className="text-uppercase">Admin Panel</h2>
         </div>
-        <form>
+        {/* <form>
           <label>
             Set Ticket Price:
             <input
@@ -50,7 +61,7 @@ const StartLottery = () => {
               onChange={(e) => setApprovedNft(e.target.value)}
             />
           </label>
-        </form>
+        </form> */}
 
         <div className={`stakecard-button`}>
           <Stack
@@ -66,7 +77,7 @@ const StartLottery = () => {
               variant="primary"
               spacing={60}
               type="submit"
-              onClick={handleStartNewLottery}
+              onClick={handleStartLottery}
             >
               {/* <img src={Lock} className="img-fluid" alt="lock icon" /> Stake and */}
               Start Lottery

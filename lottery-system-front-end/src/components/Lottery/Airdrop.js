@@ -154,6 +154,7 @@ import {
   handleBuyTicket,
   handleStorageDeposit,
   handleClaimReward,
+  get_lottery_winner
 } from "../../nearJs/utils";
 import Statistics from "./Statistics";
 

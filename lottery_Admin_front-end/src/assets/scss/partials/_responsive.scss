@@ -1,0 +1,78 @@
+// Variables
+@import "variables";
+
+@media #{$breakpoint-xs} {
+    header .logo{
+        width: 90px;
+    }
+} // breakpoint-xs end
+
+@media #{$breakpoint-xs-575} {
+
+}
+@media #{$breakpoint-above-xs} {
+
+}
+
+@media #{$breakpoint-xxs} {
+  
+} // breakpoint-xxs end
+
+@media #{$breakpoint-sm} {
+ 
+} // breakpoint-sm end
+
+@media #{$breakpoint-sm-only} {
+
+} // breakpoint-sm 991
+
+@media #{$breakpoint-md} {
+
+} // breakpoint-sm md
+
+@media #{$breakpoint-lg} {
+
+} // breakpoint-sm lg
+
+@media #{$breakpoint-xl} {
+ 
+} // breakpoint-xl 1200-1440 end
+
+@media #{$breakpoint-lg-max} {
+    .fs-26 {
+        font-size: 16px !important;
+    }
+    footer{
+        br{
+            display: none;
+        }
+        ul{
+            li{
+                margin-right: 20px;
+                img{
+                    width: 30px;
+                }
+            }
+        }
+        .socialicon{
+            text-align: center;
+            p{
+                margin: 0 0 16px 0 !important;
+            }
+        }
+        .copyrights{
+            text-align: center;
+            p{
+                font-size: 14px;
+            }
+        }
+    }
+} // below 1200
+
+@media #{$breakpoint-lg-only} {
+  
+} // above 1200
+
+@media (min-width: 1200px) and (max-width: 1300px) {
+ 
+}

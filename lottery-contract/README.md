@@ -18,13 +18,15 @@ To deploy run:
 ./Scripts/deploy.sh
 ```
 
-Initialize contract run:
+If you want this work properly don't deploy I've already deployed contract.
+
+Initialize contract run(Already Initialized):
 
 ```bash
 ./Scripts/init.sh
 ```
 
-Start Lottery run:
+Start Lottery run(Only Admin):
 
 ```bash
 ./Scripts/startLottery.sh
@@ -35,6 +37,8 @@ Deposit Storage run:
 ```bash
 ./Scripts/depositStorage.sh
 ```
+
+When new user comes for the first time, he has to run this script once to deposit storage.
 
 Get Airdrop of Tokens run:
 
@@ -48,24 +52,24 @@ Buy Lottery Tickets run:
 ./Scripts/buyTicket.sh
 ```
 
-Pick Winner of Lottery run:
+Pick Winner of Lottery run(Only Admin):
 
 ```bash
 ./Scripts/airdrop.sh
 ```
 
-## Getting Airdrop
-
-To get Airdrop of Tokens run:
+Claim Reward run(Only Winner):
 
 ```bash
-Scripts/airdrop.sh
+./Scripts/claimReward.sh
 ```
 
-## Deploying Contract
+There are also view functions in Lottery Contract in src/enumeration.rs. You can also view them using cli.
 
-To deploy run:
+## Testing
+
+To test run:
 
 ```bash
-Scripts/build.sh
+cargo test
 ```

@@ -1,7 +1,5 @@
 echo "===========================================";
-echo "Running Script to Select Winner";
+echo "Running Script for Getting Winner ";
 echo "===========================================";
 
-echo "Only Owner of Lottery can call this Script : "
-
-near call lottery_project.testnet pick_winner   --accountId lottery_project.testnet
+near view lottery_project.testnet get_winner_of_lottery

@@ -180,7 +180,7 @@ mod tests {
         let mut contract=Lottery::new();
         let con1=contract.ticket_price;
         println!("New : {:#?}",contract);
-        contract.start_new_lottery(10, U128::from(2000000000000000000000000), "ft.testnet".to_string().parse().unwrap());
+        contract.start_new_lottery(10, U128::from(2000000000000000000000000), "ft.testnet".to_string().parse().unwrap(),"nft.testnet".to_string().parse().unwrap());
         let con2=contract.ticket_price;
         assert_ne!(con1,con2);
     }

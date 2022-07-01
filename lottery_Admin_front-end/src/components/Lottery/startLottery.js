@@ -39,7 +39,6 @@ const StartLottery = () => {
 
   return (
     <>
-      {/* <p style="color:black">Lottery State Is : {state}</p> */}
       <div className="lotterycard text-center bg-white">
         <div className="lotterycard-title">
           <h2 className="text-uppercase">Admin Panel</h2>
@@ -74,11 +73,8 @@ const StartLottery = () => {
           >
             <Button
               className="btn-primary "
-              //   className="admin_card"
-              //   className={`btn-primary w-30`}
               variant="primary"
               spacing={60}
-              // type="submit"
               onClick={handleStartLottery}
             >
               Start Lottery

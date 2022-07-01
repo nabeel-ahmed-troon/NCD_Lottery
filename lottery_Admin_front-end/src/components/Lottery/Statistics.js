@@ -30,7 +30,6 @@ const Statistics = () => {
   };
   return (
     <>
-      {/* <Form noValidate> */}
       <div className="lotterycard text-center bg-white">
         <div className="lotterycard-title">
           <h2 className="text-uppercase">Lottery Details</h2>

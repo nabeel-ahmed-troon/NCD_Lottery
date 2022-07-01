@@ -44,14 +44,7 @@ const Header = () => {
           <NavLink to="/">
             <img src={Logo} className="img-fluid logo" alt="logo" />
           </NavLink>
-          {/* <p>Your Id : {accountId}</p> */}
-          {/* <Button
-            variant="primary"
-            className="btn-primary fs-14"
-            onClick={signIn}
-          >
-            Connect Wallet
-          </Button> */}
+
           <p>Status : {accountId}</p>
           <Button
             variant="primary"

@@ -8,10 +8,6 @@ import {
   handleResumeAirdrop,
 } from "../../nearJs/utils";
 import StartLottery from "./startLottery";
-// import { Formik } from "formik";
-// import { validationSchema } from "../../helpers/Validations";
-// import Bucks from "../../assets/images/bucks.svg";
-// import Lock from "../../assets/images/lock.svg";
 
 const Admin = () => {
   return (
@@ -37,29 +33,24 @@ const Admin = () => {
               type="submit"
               onClick={handlePickWinner}
             >
-              {/* <img src={Lock} className="img-fluid" alt="lock icon" /> lottery and */}
               Pick Winner
             </Button>
             <Button
               className="btn-primary"
-              //   className={`btn-toggle me-3`}
               variant="primary"
               spacing={2}
               type="submit"
               onClick={handleResumeAirdrop}
             >
-              {/* <img src={Lock} className="img-fluid" alt="lock icon" /> lottery and */}
               Resume Airdrop
             </Button>
             <Button
               className="btn-primary"
-              //   className={`btn-toggle me-3`}
               variant="primary"
               spacing={2}
               type="submit"
               onClick={handleRevokeAirdrop}
             >
-              {/* <img src={Lock} className="img-fluid" alt="lock icon" /> lottery and */}
               Revoke Airdrop
             </Button>
           </Stack>

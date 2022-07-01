@@ -57,10 +57,7 @@ const Lottery = () => {
             Admin
           </button>
         </div>
-        {/* {airdrop && <Airdrop />} */}
-        {/* {buy_ticket && <BuyTicket />} */}
         {admin && <Admin />}
-        {/* {claim_reward && <ClaimReward />} */}
       </Col>
     </Row>
   );

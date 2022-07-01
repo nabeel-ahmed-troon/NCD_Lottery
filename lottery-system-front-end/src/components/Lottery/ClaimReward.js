@@ -10,9 +10,6 @@ const ClaimReward = () => {
           <p>Winner can claim it rewarded NFT here</p>
         </div>
 
-        {/* <div className="lotterycard-descc">
-            <p></p>
-          </div> */}
         <div className="lotterycard-button">
           <Button
             className="btn-primary w-100"
@@ -20,7 +17,6 @@ const ClaimReward = () => {
             type="submit"
             onClick={handleClaimReward}
           >
-            {/* <img src={Lock} className="img-fluid" alt="lock icon" /> lottery and */}
             Get Reward
           </Button>
         </div>
